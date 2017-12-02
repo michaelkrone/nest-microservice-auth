@@ -1,5 +1,4 @@
 export * from './server';
+export * from './auth';
+export * from './jwt';
 export { ApplicationModule } from './app.module';
-export { AuthModule } from './auth/auth.module';
-export * from './auth/config/token';
-export { AuthRequestDto } from './auth/model/auth-request.dto';

@@ -1,12 +1,13 @@
 import { join } from 'path';
-import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions';
+import { MongoConnectionOptions } from 'typeorm/driver/mongodb/MongoConnectionOptions';
+import { AuthInfo } from '../auth/model/auth-info.entity';
 
-const entities = [join(__dirname, '../', '**/**.entity.{ts, js}')];
+// const entities = [join(__dirname, '../', '**/**.entity.{ts, js}')];
 
-export const DatabaseConfig: ConnectionOptions = {
+export const DatabaseConfig: MongoConnectionOptions = {
 	type: 'mongodb',
 	host: 'localhost',
 	port: 27017,
-	database: 'auth',
-	entities
+	database: 'accounts',
+	entities: [AuthInfo]
 };

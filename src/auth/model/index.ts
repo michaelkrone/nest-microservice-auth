@@ -1,2 +1,2 @@
 export * from './auth-request.dto';
-export * from './auth.entity';
+export * from './auth-info.entity';

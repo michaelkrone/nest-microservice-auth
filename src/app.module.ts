@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
+import { Connection, MongoRepository } from 'typeorm';
 
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth';
 
 @Module({
-	modules: [AuthModule],
-	components: [],
-	exports: [AuthModule]
+	modules: [AuthModule]
 })
 export class ApplicationModule {}

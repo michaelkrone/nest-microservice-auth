@@ -1,8 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 
 import { ApplicationModule } from './app.module';
-import { MicroserviceConfig } from './classes/microservice-config';
+import { MicroserviceConfig } from './classes/microservice-config.interface';
 import { config } from './config/server';
+
+import { Transport } from '@nestjs/microservices';
 
 export async function bootstrap(
 	microserviceConfig: MicroserviceConfig = config
@@ -13,3 +15,4 @@ export async function bootstrap(
 	);
 	app.listen(() => console.log('Authentication microservice is listening'));
 }
+bootstrap();

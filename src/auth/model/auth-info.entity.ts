@@ -9,7 +9,7 @@ import {
 import { PasswordService } from '../password-service/password.service';
 
 @Entity()
-export class Auth {
+export class AuthInfo {
 	@ObjectIdColumn() _id: ObjectID;
 
 	@Column()

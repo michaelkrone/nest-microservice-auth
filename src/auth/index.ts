@@ -1,3 +1,3 @@
 export * from './model';
-export * from './config/token';
-export * from './classes/credential-provider.interface';
+export * from './config';
+export { AuthModule } from './auth.module';

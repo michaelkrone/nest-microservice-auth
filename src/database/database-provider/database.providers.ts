@@ -6,7 +6,6 @@ import { AuthDbConnectionToken } from '../config/token';
 export const databaseProviders = [
 	{
 		provide: AuthDbConnectionToken,
-		useFactory: async (): Promise<Connection> =>
-			await createConnection(DatabaseConfig)
+		useFactory: (): Promise<Connection> => createConnection(DatabaseConfig)
 	}
 ];

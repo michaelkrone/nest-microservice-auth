@@ -1,14 +1,16 @@
 import { Component, Inject } from '@nestjs/common';
+import { MongoRepository } from 'typeorm';
 
-import { PasswordService } from '../../auth/password-service/password.service';
-import { JwtService } from '../jwt-service/jwt.service';
-import { AuthRequestDto, Auth, AuthRepositoryToken } from '../index';
-import { Repository } from 'typeorm/repository/Repository';
+import { JwtService } from '../../jwt';
+import { AuthRequestDto, AuthInfo } from '../model';
+import { AuthRepositoryToken } from '../config';
+import { PasswordService } from '../password-service/password.service';
 
 @Component()
 export class AuthService {
 	constructor(
-		@Inject(AuthRepositoryToken) private readonly repository: Repository<Auth>,
+		@Inject(AuthRepositoryToken)
+		private readonly repository: MongoRepository<AuthInfo>,
 		private readonly credentialProvider: JwtService
 	) {}
 
@@ -31,8 +33,10 @@ export class AuthService {
 		const { hashedPassword, salt } = PasswordService.encrypt(
 			authRequest.password
 		);
-		await this.repository.create(
-			new Auth(hashedPassword, salt, authRequest.id)
+		await this.repository.replaceOne(
+			{ reference: authRequest.id },
+			new AuthInfo(hashedPassword, salt, authRequest.id),
+			{ upsert: true }
 		);
 		return this.credentialProvider.sign(authRequest.payload);
 	}

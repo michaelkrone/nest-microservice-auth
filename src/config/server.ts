@@ -1,5 +1,5 @@
 import { Transport } from '@nestjs/microservices';
-import { MicroserviceConfig } from '../classes/microservice-config';
+import { MicroserviceConfig } from '../classes/microservice-config.interface';
 
 export const config: MicroserviceConfig = {
 	port: 6379,
