@@ -10,8 +10,9 @@
 		"start:watch": "nodemon",
 		"prestart:prod": "tsc",
 		"start:prod": "node dist/server.js",
-		"prepublishOnly": "rm -rf ./dist && tsc --p ./tsconfig.prod.json",
-		"tsc": "rm -rf ./dist && tsc"
+		"prepublishOnly": "yarn build",
+		"tsc": "rm -rf ./dist && tsc",
+		"build": "rm -rf ./dist && tsc --p ./tsconfig.prod.json"
 	},
 	"dependencies": {
 		"@nestjs/common": "^4.0.0",

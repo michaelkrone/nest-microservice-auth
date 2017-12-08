@@ -1,7 +1,7 @@
 import { Transport } from '@nestjs/microservices';
-import { MicroserviceConfig } from '../classes/microservice-config.interface';
+import { MicroserviceConfig } from '../shared/classes/microservice-config.interface';
 
-export const config: MicroserviceConfig = {
+export const microserviceConfig: MicroserviceConfig = {
 	port: 6379,
 	transport: Transport.REDIS
 };

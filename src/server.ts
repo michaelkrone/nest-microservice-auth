@@ -1,18 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-
-import { ApplicationModule } from './app.module';
-import { MicroserviceConfig } from './classes/microservice-config.interface';
-import { config } from './config/server';
-
 import { Transport } from '@nestjs/microservices';
 
+import { ApplicationModule } from './app.module';
+import { MicroserviceConfig } from './shared/classes/microservice-config.interface';
+import { microserviceConfig } from './config/server';
+
 export async function bootstrap(
-	microserviceConfig: MicroserviceConfig = config
+	config: MicroserviceConfig = microserviceConfig
 ) {
-	const app = await NestFactory.createMicroservice(
-		ApplicationModule,
-		microserviceConfig
+	const app = await NestFactory.createMicroservice(ApplicationModule, config);
+	app.listen(() =>
+		console.log('Authentication microservice is listening', config)
 	);
-	app.listen(() => console.log('Authentication microservice is listening'));
 }
 bootstrap();
