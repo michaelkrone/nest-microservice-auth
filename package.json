@@ -19,6 +19,7 @@
 		"@nestjs/core": "^4.0.0",
 		"@nestjs/cqrs": "^4.0.1",
 		"@nestjs/microservices": "^4.0.0",
+		"@nestjs/swagger": "^1.1.2",
 		"@nestjs/websockets": "^4.0.0",
 		"@types/lodash": "^4.14.85",
 		"class-transformer": "^0.1.8",
